@@ -53,7 +53,7 @@ function Index() {
     Science: [{label:'Our Approach',href:'/approach'},{label:'Microbiome 101',href:'/microbiome'},{label:'SeedLabs',href:'/seedlabs'},{label:'Sustainability',href:'/sustainability'}],
     Learn: [{label:'Learn with Seed',href:'/cultured'},{label:'Find your routine',href:'/find-your-routine'},{label:'Help + FAQs',href:'https://help.seed.com/'}],
   };
-  const footer = [
+  const footer: {title: string; links: [string, string][]}[] = [
     {title:'Products',links:[['Shop All','/products']]},
     {title:'About',links:[['Science','/approach'],['Sustainability','/sustainability'],['SeedLabs','/seedlabs']]},
     {title:'Inquire',links:[['Superfiliate','https://seed.superfiliate.com/portal/sign-up'],['Partner','https://app.impact.com/campaign-promo-signup/Seed-Health-Inc.brand'],['Practitioners','/practitioners'],['Press','/press'],['Careers','/join-us']]},
