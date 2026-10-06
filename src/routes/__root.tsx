@@ -78,9 +78,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Seed • The evolution of health" },
+      { title: "Weda • The evolution of health" },
       { name: "description", content: "Pioneering microbiome science for human and planetary health." },
-      { property: "og:title", content: "Seed • The evolution of health" },
+      { property: "og:title", content: "Weda • The evolution of health" },
       { property: "og:description", content: "Pioneering microbiome science for human and planetary health." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
