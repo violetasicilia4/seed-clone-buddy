@@ -31,7 +31,9 @@ export const Route = createFileRoute('/')({
     { property: 'og:title', content: 'Weda • A life-changing health routine' },
     { property: 'og:description', content: 'Whole body health starts in the gut. Discover scientifically studied formulations from Weda.' },
     { property: 'og:type', content: 'website' },
+    { property: 'og:image', content: hero.url },
     { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: hero.url },
   ] }),
   component: Index,
 });
