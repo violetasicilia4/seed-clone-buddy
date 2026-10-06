@@ -159,7 +159,7 @@ h2 { font-weight: 400; font-size: 40px; line-height: 1.08; margin: 0; }
  .hero-copy p { font-size: 12px; max-width: 290px; }
  .hero-actions { margin-top: 20px; }
  .nav-inner { height: 62px; width: 88%; gap: 0; }
- .nav-left,.nav-right > .seed-nav-button { display: none; }
+ .nav-left,.nav-right > .seed-nav-button:not(.mobile-menu) { display: none; }
  .nav-right { gap: 10px; }
  .mobile-menu { display: inline-flex; }
  .nav-panel { position: absolute; top: 62px; left: 0; right: 0; flex-direction: column; gap: 12px; padding: 25px 6%; max-height: 65svh; overflow: auto; }
