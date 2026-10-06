@@ -51,27 +51,27 @@ button, input { font: inherit; }
 .seed-link-button span { border-bottom: 1px solid currentColor; padding-bottom: 5px; }
 .seed-nav-button { color: inherit; background: transparent; height: 42px; padding: 0 12px; font-size: 13px; font-weight: 400; }
 .seed-nav-button:hover { opacity: .65; }
-.announcement { height: 29px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 11px; }
-.seed-hero { position: relative; height: calc(100svh - 100px); min-height: 600px; max-height: 900px; overflow: hidden; border-radius: 0 0 25px 25px; }
+.announcement { height: 36px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 13px; }
+.seed-hero { position: relative; height: calc(100svh - 50px); min-height: 600px; max-height: 900px; overflow: hidden; border-radius: 0 0 25px 25px; }
 .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .seed-nav { position: absolute; z-index: 10; top: 0; left: 0; right: 0; }
-.nav-inner { max-width: 1440px; width: 72%; margin: 0 auto; height: 62px; display: flex; align-items: center; gap: 16px; }
+.nav-inner { max-width: 1800px; width: 92%; margin: 0 auto; height: 62px; display: flex; align-items: center; gap: 16px; }
 .seed-logo { display: inline-flex; align-items: center; font-size: 21px; gap: 3px; font-weight: 400; }
 .seed-logo i { width: 12px; height: 12px; background: currentColor; border-radius: 50%; }
 .nav-left, .nav-right { display: flex; gap: 8px; align-items: center; }
 .nav-right { margin-left: auto; }
 .nav-right .seed-button { height: 36px; padding: 0 18px; font-size: 12px; }
 .mobile-menu { display: none; }
-.hero-inner { width: 72%; max-width: 1440px; margin: 0 auto; position: relative; padding-top: 160px; }
-.hero-copy { width: 440px; max-width: 43%; }
-.hero-copy h1 { font-size: 36px; line-height: 1.06; font-weight: 400; margin: 0 0 18px; }
-.hero-copy p { font-size: 13px; line-height: 1.4; max-width: 360px; margin: 0; }
+.hero-inner { width: 92%; max-width: 1800px; margin: 0 auto; position: relative; padding-top: 140px; }
+.hero-copy { width: 460px; max-width: 46%; }
+.hero-copy h1 { font-size: 42px; line-height: 1.12; font-weight: 400; margin: 0 0 18px; }
+.hero-copy p { font-size: 14px; line-height: 1.4; max-width: 400px; margin: 0; }
 .hero-actions { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
 .hero-actions .seed-button { height: 42px; padding: 0 20px; font-size: 13px; }
-.nav-panel { background: var(--background); border-radius: 0 0 12px 12px; padding: 32px max(24px,14%); display: flex; gap: 55px; border-top: 1px solid var(--border); }
+.nav-panel { background: var(--background); border-radius: 0 0 12px 12px; padding: 32px 4%; display: flex; gap: 55px; border-top: 1px solid var(--border); }
 .nav-panel a { display: block; padding: 10px 0; font-size: 17px; }
 .nav-panel-label { font-size: 12px; color: var(--muted-foreground); margin-bottom: 12px; }
-.section-inner { max-width: 1440px; width: 75%; margin: 0 auto; }
+.section-inner { max-width: 1800px; width: 92%; margin: 0 auto; }
 h2 { font-weight: 400; font-size: 40px; line-height: 1.08; margin: 0; }
 .products-section { background: var(--primary); color: var(--primary-foreground); padding: 48px 0 65px; }
 .section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 42px; }
@@ -148,7 +148,7 @@ h2 { font-weight: 400; font-size: 40px; line-height: 1.08; margin: 0; }
 .awaken-image { width: 100%; height: 170px; object-fit: contain; }
 .footer-bottom { display: flex; justify-content: space-between; font-size: 10px; padding-top: 30px; }
 @media(min-width:1600px) { .hero-copy h1 { font-size: 48px; } .hero-copy p { font-size: 16px; max-width: 440px; } .hero-copy { width: 500px; } .hero-inner { padding-top: 220px; } .announcement { height: 40px; font-size: 13px; } .nav-inner { height: 76px; } }
-@media(max-width:1000px) { .nav-inner,.hero-inner,.section-inner { width: 88%; } .hero-copy { max-width: 47%; } .hero-copy h1 { font-size: 34px; } .section-heading,.duo-layout,.science-heading,.viacap-title { gap: 35px; } .product-info { padding: 10px 12px 20px; } .product-info h3 { font-size: 22px; } .product-info p { font-size: 12px; } .footer-top { gap: 40px; } }
+@media(max-width:1000px) { .hero-copy { max-width: 47%; } .hero-copy h1 { font-size: 34px; } .section-heading,.duo-layout,.science-heading,.viacap-title { gap: 35px; } .product-info { padding: 10px 12px 20px; } .product-info h3 { font-size: 22px; } .product-info p { font-size: 12px; } .footer-top { gap: 40px; } }
 @media(max-width:640px) {
  .announcement { height: 28px; font-size: 10px; }
  .seed-hero { height: 760px; min-height: 0; max-height: calc(100svh - 65px); border-radius: 0 0 18px 18px; }
