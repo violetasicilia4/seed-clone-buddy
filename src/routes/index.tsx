@@ -29,7 +29,7 @@ export const Route = createFileRoute('/')({
     { title: 'Weda • A life-changing health routine, built for your microbiome' },
     { name: 'description', content: 'Transform your gut health, energy, sleep, and nutrition with formulations designed for real results. Discover Weda.' },
     { property: 'og:title', content: 'Weda • A life-changing health routine' },
-    { property: 'og:description', content: 'Whole body health starts in the gut. Discover scientifically studied formulations from Seed.' },
+    { property: 'og:description', content: 'Whole body health starts in the gut. Discover scientifically studied formulations from Weda.' },
     { property: 'og:type', content: 'website' },
     { name: 'twitter:card', content: 'summary_large_image' },
   ] }),
