@@ -1,0 +1,3 @@
+- [ ] Recreate Seed homepage with original content and hosted imagery.
+- [ ] Preserve navigation to original product, science, quiz and account pages.
+- [ ] Verify appearance, images and menu interactions.
