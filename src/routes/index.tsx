@@ -1,27 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { ArrowRight, Play, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import hero from '@/assets/hero.asset.json';
-import ds from '@/assets/product-0.asset.json';
-import dm from '@/assets/product-1.asset.json';
-import am from '@/assets/product-2.asset.json';
-import pm from '@/assets/product-3.asset.json';
-import duo from '@/assets/duo.asset.json';
-import routine from '@/assets/routine.asset.json';
-import unboxing from '@/assets/unboxing.asset.json';
-import duoPlant from '@/assets/duo-plant.asset.json';
-import capsule from '@/assets/capsule.asset.json';
-import microbiome from '@/assets/microbiome.asset.json';
-import story1 from '@/assets/story-1.asset.json';
-import story2 from '@/assets/story-2.asset.json';
-import alice from '@/assets/alice.asset.json';
-import community1 from '@/assets/community-1.asset.json';
-import community2 from '@/assets/community-2.asset.json';
-import community3 from '@/assets/community-3.asset.json';
-import labsBg from '@/assets/labs-background.asset.json';
-import gutBg from '@/assets/gut-background.asset.json';
-import labs from '@/assets/labs.asset.json';
-import awaken from '@/assets/awaken.asset.json';
+import { hero, ds, dm, am, pm, duo, routine, unboxing, duoPlant, capsule, microbiome, story1, story2, alice, community1, community2, community3, labsBg, gutBg, labs, awaken } from '@/assets/images';
 
 export const Route = createFileRoute('/')({
   head: () => ({ meta: [

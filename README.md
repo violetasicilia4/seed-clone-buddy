@@ -1,24 +1,14 @@
 # Seed clone
 
-https://seed.com/ cloname esta web tal cual
+Plantilla basada en la UX, tipografía, colores y estructura de https://seed.com/, para adaptarla a mi propia aplicación.
 
-This project was built with [Lovable](https://lovable.dev).
+## Desarrollo
 
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/bde54a2f-c5fe-5b0e-917e-a2b2d29a4a4c).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Necesitas Node.js y npm.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
 npm i
 npm run dev
 ```
+
+El servidor local queda en http://localhost:8080.

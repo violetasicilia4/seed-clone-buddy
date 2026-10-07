@@ -1,9 +1,0 @@
-{
-  "source": "https://seed.com/",
-  "capabilities": [
-    {"capability":"Homepage design, content and imagery","source":"Published homepage","outcome":"recreate","status":"verified","next_action":"None; desktop and mobile render, images and menus checked"},
-    {"capability":"Product shopping, quiz and account","source":"Seed navigation and commerce links","outcome":"preserve original destinations","status":"links_verified","next_action":"Independent checkout, quiz and accounts are not migrated; original service flows remain unverified"},
-    {"capability":"Email subscription","source":"Homepage newsletter","outcome":"preserve original service destination","status":"blocked","next_action":"Original website link retained; independent signup requires the original mailing service configuration"},
-    {"capability":"Database, records and auth identities","source":"No source export available","outcome":"not_imported","status":"blocked","next_action":"Source code and data exports required for an independent full-service migration"}
-  ]
-}
