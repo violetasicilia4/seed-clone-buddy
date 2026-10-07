@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
-import { ArrowRight, Menu, X, Play, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Play, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import hero from '@/assets/hero.asset.json';
 import ds from '@/assets/product-0.asset.json';
@@ -27,7 +26,7 @@ import awaken from '@/assets/awaken.asset.json';
 export const Route = createFileRoute('/')({
   head: () => ({ meta: [
     { title: 'Weda • A life-changing health routine, built for your microbiome' },
-    { name: 'description', content: 'Transform your gut health, energy, sleep, and nutrition with formulations designed for real results. Discover Weda.' },
+    { name: 'description', content: 'Sumate a la plataforma para organizar casamientos que ayudó a miles de parejas. Discover Weda.' },
     { property: 'og:title', content: 'Weda • A life-changing health routine' },
     { property: 'og:description', content: 'Whole body health starts in the gut. Discover scientifically studied formulations from Weda.' },
     { property: 'og:type', content: 'website' },
@@ -49,12 +48,6 @@ function SeedLink({href,children,pill=false}: {href:string;children:React.ReactN
   return <Button variant={pill?'seed':'seedLink'} asChild><a href={href}>{pill?children:<><span>{children}</span><ArrowRight size={15}/></>}</a></Button>;
 }
 function Index() {
-  const [menu,setMenu] = useState<string|null>(null);
-  const menus: Record<string,{label:string;href:string}[]> = {
-    Shop: [{label:'Shop All',href:'/products'},...products.map(p=>({label:`${p.code} ${p.name}`,href:p.path})),{label:'Daily Essentials Duo',href:'/daily-essentials-duo'}],
-    Science: [{label:'Our Approach',href:'/approach'},{label:'Microbiome 101',href:'/microbiome'},{label:'SeedLabs',href:'/seedlabs'},{label:'Sustainability',href:'/sustainability'}],
-    Learn: [{label:'Learn with Weda',href:'/cultured'},{label:'Find your routine',href:'/find-your-routine'},{label:'Help + FAQs',href:'https://help.seed.com/'}],
-  };
   const footer: {title: string; links: [string, string][]}[] = [
     {title:'Products',links:[['Shop All','/products']]},
     {title:'About',links:[['Science','/approach'],['Sustainability','/sustainability'],['SeedLabs','/seedlabs']]},
@@ -66,15 +59,13 @@ function Index() {
   return <>
     <a className="announcement" href={seed('/find-your-routine')}>Find the right products for you <ArrowRight size={11} className="ml-1"/></a>
     <section className="seed-hero">
-      <img className="hero-image" src={hero.url} alt="Four jars of Weda products on a table" fetchPriority="high"/>
-      <header className="seed-nav" onMouseLeave={()=>setMenu(null)}>
+      <video className="hero-image" src="/hero.mp4" autoPlay muted loop playsInline preload="auto" aria-label="Weda products"/>
+      <header className="seed-nav">
         <div className="nav-inner"><SeedLogo/>
-          <nav className="nav-left" aria-label="Main navigation">{Object.keys(menus).map(name=><Button key={name} variant="seedNav" aria-expanded={menu===name} onMouseEnter={()=>setMenu(name)} onClick={()=>setMenu(menu===name?null:name)}>{name}</Button>)}</nav>
-          <div className="nav-right"><Button asChild variant="seedNav"><a href={seed('/account/home')}>Sign in</a></Button><SeedLink href={seed('/products')} pill>Get Started</SeedLink><Button className="mobile-menu" variant="seedNav" size="icon" aria-label={menu==='mobile'?'Close menu':'Open menu'} aria-expanded={menu==='mobile'} onClick={()=>setMenu(menu==='mobile'?null:'mobile')}>{menu==='mobile'?<X/>:<Menu/>}</Button></div>
+          <div className="nav-right"><Button asChild variant="seedNav"><a href="#">Encontrá a una pareja</a></Button><Button asChild variant="seedNav"><a href={seed('/account/home')}>Ingresar</a></Button><SeedLink href={seed('/products')} pill>Crear mi evento</SeedLink></div>
         </div>
-        {menu&&<nav className="nav-panel" aria-label={`${menu} menu`}>{(menu==='mobile'?Object.entries(menus):[[menu,menus[menu]]]).map(([name,links])=><div key={String(name)}><div className="nav-panel-label">{String(name)}</div>{(links as {label:string;href:string}[]).map(l=><a key={l.label} href={l.href.startsWith('https:')?l.href:seed(l.href)}>{l.label}</a>)}</div>)}</nav>}
       </header>
-      <main id="main" className="hero-inner"><div className="hero-copy"><h1>A life-changing<br/>health routine, built<br/>for your microbiome.</h1><p>Transform your gut health, energy, sleep, and nutrition with formulations designed for real results.</p><div className="hero-actions"><SeedLink href={seed('/find-your-routine')} pill>Take the Quiz</SeedLink><SeedLink href={seed('/products')}>Shop Now</SeedLink></div></div></main>
+      <main id="main" className="hero-inner"><div className="hero-copy"><h1>Organizá tu casamiento en un solo lugar.</h1><p>Sumate a la plataforma para organizar casamientos que ayudó a miles de parejas.</p><div className="hero-actions"><SeedLink href={seed('/find-your-routine')} pill>Crear mi evento</SeedLink><SeedLink href={seed('/products')}>Ver ejemplo</SeedLink></div></div></main>
     </section>
     <section className="products-section" id="products"><div className="section-inner"><div className="section-heading"><h2>Whole body health starts<br/>in the gut.</h2><div><p>Formulations that provide sustained support using key scientifically and clinically studied ingredients</p><SeedLink href={seed('/products')}>Shop all</SeedLink></div></div><div className="product-grid">{products.map(p=><a className="product-card" key={p.code} href={seed(p.path)}><span className="product-badge">{p.badge}</span><img src={p.image} alt={`${p.code} ${p.name}`} loading="lazy"/><div className="product-info"><h3>{p.code}</h3><p>{p.name}</p><div className="shop-line"><span>Shop Now</span><ArrowUpRight size={16}/></div><small>Starting at ${p.price} per month</small></div></a>)}</div></div></section>
     <section className="duo-section"><div className="section-inner duo-layout"><div className="duo-copy"><p className="eyebrow">Bundle + Save 25%</p><h2>Daily essentials for nutrition and digestive health.</h2><p>Our clinically studied daily synbiotic paired with a daily multivitamin reduces bloating, promotes healthy regularity and helps cover nutrient gaps.</p><SeedLink href={seed('/daily-essentials-duo')} pill>Shop Daily Essentials Duo</SeedLink></div><div><img className="duo-main" src={duo.url} alt="Daily Synbiotic and Daily Multivitamin" loading="lazy"/><div className="duo-thumbnails">{[routine,unboxing,duoPlant].map((im,i)=><img key={im.url} src={im.url} alt={['A daily multivitamin routine','Unboxing Weda products','Weda daily essentials'][i]} loading="lazy"/>)}</div></div></div></section>
