@@ -367,3 +367,91 @@ h2 { font-weight: 400; font-size: 40px; line-height: 1.08; margin: 0; }
 @media(prefers-reduced-motion:reduce) { .hero-image { animation: none; } }
 
 @media(max-width:1023px) { .nav-right .seed-button { height: 40px; } .seed-logo { min-height: 44px; } }
+
+/* Barra flotante: aparece al salir del hero y baja con el scroll */
+html { scroll-padding-top: 80px; }
+.float-nav { position: fixed; z-index: 60; top: calc(10px + env(safe-area-inset-top)); left: 0; right: 0; pointer-events: none; transform: translateY(-160%); visibility: hidden; transition: transform .45s var(--ease, cubic-bezier(.2,.7,.2,1)), visibility 0s .45s; }
+.float-nav.show { transform: none; visibility: visible; transition: transform .45s cubic-bezier(.2,.7,.2,1), visibility 0s; }
+.float-bar { width: min(1800px, calc(100% - 24px)); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.float-pill { pointer-events: auto; display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 8px 0 18px; border-radius: 999px; color: #fff; background: rgb(43 64 69 / .4); -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4); text-shadow: 0 1px 8px rgb(0 0 0 / .28); }
+.float-cta { text-shadow: none; }
+.float-right { padding: 0 6px; }
+.float-left .seed-logo { margin-right: 10px; font-size: 21px; min-height: 0; }
+.float-link { display: none; padding: 0 14px; line-height: 44px; font-size: 14px; border-radius: 999px; }
+.float-link:hover { background: rgb(255 255 255 / .14); }
+.float-cta { display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 999px; background: #fff; color: var(--foreground); font-size: 14px; white-space: nowrap; }
+.float-cta:hover { background: var(--paper); }
+.float-burger { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: #fff; background: transparent; border: 0; cursor: pointer; }
+.float-menu { pointer-events: auto; width: min(420px, calc(100% - 24px)); margin: 8px 12px 0 auto; padding: 10px; border-radius: 24px; color: #fff; background: rgb(43 64 69 / .88); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); display: flex; flex-direction: column; }
+.float-menu[hidden] { display: none; }
+.float-menu a { padding: 14px 16px; font-size: 16px; border-radius: 14px; }
+.float-menu a:hover { background: rgb(255 255 255 / .12); }
+.float-menu .float-menu-cta { margin-top: 6px; background: #fff; color: var(--foreground); text-align: center; border-radius: 999px; }
+@media(min-width:1024px) {
+  .float-link.float-desktop { display: inline-block; }
+  .float-burger, .float-menu { display: none !important; }
+  .float-bar { width: calc(100% - 32px); }
+  .float-left { padding-right: 14px; }
+  .float-right { padding: 0 6px 0 10px; }
+}
+@media(max-width:640px) { .float-pill { height: 52px; } .float-cta { padding: 0 16px; font-size: 13px; } }
+@media(prefers-reduced-motion:reduce) { .float-nav, .float-nav.show { transition: none; } }
+
+
+/* Barra flotante v2: mismas posiciones y tipografía que la barra original, y aparece "naciendo" de ellas */
+.float-nav { transform: none; transition: visibility 0s .4s; }
+.float-nav.show { transition: visibility 0s; }
+.float-pill { opacity: 0; transform: translateY(-14px) scale(.94); transition: opacity .35s ease, transform .45s cubic-bezier(.2,.7,.2,1); background: rgb(70 82 80 / .22); -webkit-backdrop-filter: blur(20px) saturate(1.5); backdrop-filter: blur(20px) saturate(1.5); text-shadow: 0 1px 10px rgb(0 0 0 / .35); }
+.float-left { transform-origin: left top; }
+.float-right { transform-origin: right top; }
+.float-nav.show .float-pill { opacity: 1; transform: none; }
+.float-bar { width: calc(min(92%, 1800px) + 20px); }
+.float-pill { height: 52px; padding: 0 10px; }
+.float-left .seed-logo { margin: 0; font-size: 21px; }
+.float-link { font-size: 13px; padding: 0 12px; line-height: 42px; }
+.float-cta { height: 36px; padding: 0 18px; font-size: 12px; margin-left: 12px; }
+@media(max-width:640px) { .float-cta { height: 40px; padding: 0 16px; font-size: 13px; margin-left: 0; } .float-pill { height: 52px; } }
+@media(min-width:1024px) { .float-bar { width: calc(min(92%, 1800px) + 20px); } .float-left { padding: 0 10px; } .float-right { padding: 0 10px; } }
+@media(prefers-reduced-motion:reduce) { .float-pill { transition: none; transform: none; } }
+
+
+/* Barra única (v3): vive justo debajo del anuncio, sube con la página y se pega arriba; las píldoras se rellenan con el scroll */
+.float-nav { --p: 0; position: sticky; top: calc(8px + env(safe-area-inset-top)); left: auto; right: auto; height: 0; z-index: 60; transform: none; visibility: visible; transition: none; pointer-events: none; }
+.float-bar { position: relative; top: 5px; }
+.float-pill { position: relative; opacity: 1; transform: none; transition: none; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; text-shadow: 0 1px 10px rgb(0 0 0 / calc(.12 + .23 * var(--p))); }
+.float-pill::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1; background: rgb(70 82 80 / .22); -webkit-backdrop-filter: blur(20px) saturate(1.5); backdrop-filter: blur(20px) saturate(1.5); opacity: var(--p); }
+.float-nav.show .float-pill { transform: none; }
+@media(max-width:640px) {
+  .float-bar { width: calc(100% - 12px); }
+  .float-left { padding: 0 22px 0 20px; }
+  .float-right { padding: 0 8px 0 10px; }
+}
+
+
+/* Menú desplegable de celular: panel a pantalla completa, como el de Seed */
+.float-menu { position: fixed; left: 12px; right: 12px; bottom: 12px; top: 80px; width: auto; margin: 0; padding: 22px 22px 20px; border-radius: 28px; gap: 14px; overflow-y: auto; color: #fff; background: rgb(43 64 69 / .72); -webkit-backdrop-filter: blur(26px) saturate(1.4); backdrop-filter: blur(26px) saturate(1.4); }
+.float-menu[hidden] { display: none; }
+.float-menu .menu-row { display: flex; align-items: center; gap: 20px; padding: 0; border-radius: 20px; }
+.float-menu .menu-row:hover { background: transparent; }
+.menu-tile { flex: none; width: 76px; height: 76px; display: grid; place-items: center; border-radius: 18px; background: rgb(255 255 255 / .14); }
+.menu-row small { display: block; font-size: 14px; opacity: .72; margin-bottom: 4px; }
+.menu-row strong { font-weight: 500; font-size: 20px; line-height: 1.2; }
+.float-menu .menu-all { margin-top: auto; align-self: flex-end; display: inline-flex; align-items: center; gap: 8px; padding: 0 0 6px; font-size: 16px; font-weight: 500; border-radius: 0; }
+.float-menu .menu-all span { border-bottom: 1px solid currentColor; padding-bottom: 4px; }
+.float-menu .menu-all:hover { background: transparent; }
+
+/* Web: la píldora del logo con el mismo aire que en celular */
+@media(min-width:1024px) { .float-left { padding: 0 22px 0 20px; } }
+
+/* Celulares muy angostos (320–360): la barra no se sale de la pantalla */
+@media(max-width:360px) {
+  .float-bar { width: calc(100% - 12px); gap: 6px; }
+  .float-left { padding: 0 16px; }
+  .float-left .seed-logo { font-size: 19px; }
+  .float-cta { padding: 0 12px; font-size: 12px; }
+  .float-right { padding: 0 4px 0 6px; }
+}
+
+
+/* El panel del menú se cierra justo después de las 3 opciones */
+.float-menu { bottom: auto; max-height: calc(100dvh - 92px); padding: 20px 22px; }
