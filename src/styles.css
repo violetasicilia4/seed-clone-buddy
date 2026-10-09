@@ -477,3 +477,16 @@ html { scroll-padding-top: 80px; }
 
 /* Banner "¿Invitado?" en el celeste de la sección de regalos */
 .announcement { background: var(--slate); color: #fff; }
+
+/* Hero: arriba siempre recto y a pantalla completa; solo el borde de abajo es redondeado (clip explícito para que Safari no redondee el video) */
+.seed-hero { border-radius: 0 0 25px 25px; isolation: isolate; }
+.hero-image { border-radius: 0; }
+
+/* Celular: el hero llena la pantalla y deja solo un borde crema abajo; el título de la sección siguiente aparece recién al scrollear.
+   lvh = alto con las barras de Safari recogidas (en iPhone 16 el alto "svh" era menor al visible y el hero quedaba corto). */
+@media(max-width:640px) {
+  .seed-hero { height: calc(100svh - 38px - 24px); min-height: 500px; max-height: 900px; }
+}
+@supports (height: 100lvh) {
+  @media(max-width:640px) { .seed-hero { height: calc(100lvh - 38px - 24px); } }
+}
