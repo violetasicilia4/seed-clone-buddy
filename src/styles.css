@@ -522,3 +522,15 @@ html { scroll-padding-top: 80px; }
   .duo-media { margin-top: calc(var(--duo-drop) - 24px); }
   .duo-copy { position: relative; top: 12px; }
 }
+
+/* Sección "Most probiotics…": foto de fondo en blanco y negro, algo desenfocada */
+.viacap-section { position: relative; overflow: hidden; isolation: isolate; background: #e4e2dc; }
+.viacap-section::before { content: ""; position: absolute; inset: -24px; z-index: -2; background: url("/fondo-ramo.jpg") center / cover no-repeat; filter: grayscale(1) blur(5px) contrast(1.05); }
+.viacap-section::after { content: ""; position: absolute; inset: 0; z-index: -1; background: rgb(236 234 228 / .55); }
+
+.viacap-section::before { background-position: center 36%; filter: grayscale(1) blur(3px) contrast(1.08); }
+.viacap-section::after { background: rgb(240 238 232 / .38); }
+
+/* Fondo en blanco y negro, sin desenfoque agregado (la foto ya es suave) */
+.viacap-section::before { inset: 0; filter: grayscale(1) contrast(1.05); }
+.viacap-section::after { background: rgb(240 238 232 / .32); }
