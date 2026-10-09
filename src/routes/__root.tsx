@@ -73,11 +73,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Weda • The evolution of health" },
-      { name: "description", content: "Pioneering microbiome science for human and planetary health." },
-      { property: "og:title", content: "Weda • The evolution of health" },
-      { property: "og:description", content: "Pioneering microbiome science for human and planetary health." },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { title: "Weda • Organizá tu casamiento en un solo lugar" },
+      { name: "description", content: "Creá tu lista de regalos, gestioná invitados y compartí toda la información de tu evento." },
+      { property: "og:title", content: "Weda • Organizá tu casamiento en un solo lugar" },
+      { property: "og:description", content: "Creá tu lista de regalos, gestioná invitados y compartí toda la información de tu evento." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -97,7 +97,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <HeadContent />
       </head>
