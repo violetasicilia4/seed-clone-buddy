@@ -474,3 +474,6 @@ html { scroll-padding-top: 80px; }
 
 /* Sin borde blanco en el cristal de la barra */
 .float-pill { box-shadow: 0 6px 24px rgb(0 0 0 / calc(.10 * var(--p))); }
+
+/* Banner "¿Invitado?" en el celeste de la sección de regalos */
+.announcement { background: var(--slate); color: #fff; }
