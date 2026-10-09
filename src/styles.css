@@ -88,7 +88,7 @@ button, input { font: inherit; }
 .nav-panel-label { font-size: 12px; color: var(--muted-foreground); margin-bottom: 12px; }
 .section-inner { max-width: 1800px; width: 92%; margin: 0 auto; }
 h2 { font-weight: 400; font-size: 40px; line-height: 1.08; margin: 0; }
-:root { --curve: clamp(24px, 3.5vw, 48px); --paper: #f5f2eb; --olive: #b6b46e; --forest: #2b4045; --section: #f3f0e8; --slate: #707d87; }
+:root { --curve: clamp(24px, 3.5vw, 48px); --paper: #f5f2eb; --olive: #b6b46e; --forest: #2b4045; --section: #f3f0e8; --slate: #707d87; --duo-pad: clamp(36px, 6svh, 72px); }
 .products-section { background: var(--section); color: var(--foreground); padding: 58px 0 calc(58px + var(--curve)); }
 .section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: last baseline; margin-bottom: 42px; }
 .section-heading > div:last-child { display: flex; justify-content: space-between; align-items: last baseline; gap: 12px 32px; }
@@ -105,7 +105,7 @@ h2 { font-weight: 400; font-size: 40px; line-height: 1.08; margin: 0; }
 .product-info h3 { font-size: clamp(16px, 1.45vw, 21px); line-height: 1.2; font-weight: 400; margin: 0 0 8px; text-wrap: balance; }
 .product-info .shop-line { display: flex; justify-content: space-between; font-size: 13px; margin-top: auto; }
 .product-info small { font-size: 13px; line-height: 1.45; color: var(--muted-foreground); display: block; margin-bottom: 22px; }
-.duo-section { position: relative; margin-top: calc(var(--curve) * -1); background: var(--slate); color: #fff; border-radius: var(--curve) var(--curve) 0 0; padding: 80px 0; }
+.duo-section { position: relative; margin-top: calc(var(--curve) * -1); background: var(--slate); color: #fff; border-radius: var(--curve) var(--curve) 0 0; padding: var(--duo-pad) 0; }
 .duo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
 .eyebrow { font-size: 12px; margin: 0 0 24px; }
 .duo-copy h2 { max-width: 420px; }
@@ -113,7 +113,7 @@ h2 { font-weight: 400; font-size: 40px; line-height: 1.08; margin: 0; }
 .duo-section .seed-button { background: var(--paper); color: var(--foreground); }
 .duo-section .seed-button:hover { background: #fff; }
 .duo-copy > p:not(.eyebrow) { font-size: 15px; line-height: 1.5; max-width: 400px; margin: 25px 0; }
-.duo-media { display: flex; flex-direction: column; aspect-ratio: 568 / 718; }
+.duo-media { display: flex; flex-direction: column; width: 100%; max-width: 620px; justify-self: end; height: clamp(380px, calc(100svh - var(--duo-pad) * 2 - var(--curve)), 680px); }
 .duo-main { width: 100%; flex: 1 1 0; min-height: 0; object-fit: cover; border-radius: 8px; }
 .duo-thumbnails { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 10px; }
 .duo-thumbnails img { width: 100%; aspect-ratio: 1.25; object-fit: cover; border-radius: 5px; }
@@ -263,4 +263,39 @@ h2 { font-weight: 400; font-size: 40px; line-height: 1.08; margin: 0; }
 @media (prefers-reduced-motion: reduce) { .product-card, .product-card * { animation: none !important; transition: none !important; } }
 
 /* Celular: las 2 miniaturas cuadradas, como el ejemplo de Seed */
-@media(max-width:640px) { .duo-media { display: block; aspect-ratio: auto; } .duo-main { aspect-ratio: 1; } .duo-thumbnails img { aspect-ratio: 1; border-radius: 8px; } }
+/* Celular: todo el bloque de regalos entra en una pantalla (estructura de Seed) */
+@media(max-width:640px) {
+  .duo-section { padding: 30px 0 34px; }
+  .duo-layout { gap: 16px; }
+  .duo-copy .eyebrow { margin: 0 0 8px; font-size: 11px; }
+  .duo-copy h2 { font-size: 26px; line-height: 1.1; }
+  .duo-copy > p:not(.eyebrow) { font-size: 13.5px; line-height: 1.45; margin: 12px 0 16px; }
+  .duo-section .seed-button { height: 42px; padding: 0 20px; font-size: 13px; display: flex; width: fit-content; margin-left: auto; }
+  .duo-media { display: block; height: auto; }
+  .duo-main { aspect-ratio: 16 / 9; width: 100%; height: auto; }
+  .duo-thumbnails { gap: 8px; margin-top: 8px; }
+  .duo-thumbnails img { aspect-ratio: 1; border-radius: 8px; }
+}
+
+/* Celulares de pantalla baja: compacta un poco más las fotos para que el bloque siga entrando */
+@media(max-width:640px) and (max-height:760px) {
+  .duo-main { aspect-ratio: 2.2 / 1; }
+  .duo-thumbnails img { aspect-ratio: 1.3; }
+}
+
+/* Celular: la sección de herramientas (título + 4 tarjetas + botón) entra en una pantalla */
+@media(max-width:640px) {
+  .products-section { padding: 26px 0 calc(30px + var(--curve)); }
+  .section-heading { margin-bottom: 14px; }
+  .section-heading h2 { font-size: 24px; max-width: none; }
+  .section-heading > div:last-child { display: none; }
+  .product-grid { gap: 10px; }
+  .mock { aspect-ratio: 1 / 0.93; }
+  .product-info { padding: 8px 12px 12px; }
+  .product-info h3 { font-size: 14px; line-height: 1.2; margin: 0 0 4px; }
+  .product-info small { font-size: 11px; line-height: 1.35; margin-bottom: 8px; }
+  .product-info .shop-line { font-size: 12px; }
+  .products-cta { margin-top: 16px; }
+  .products-cta .seed-link-button { background: var(--primary); color: var(--primary-foreground); border-radius: 999px; height: 42px; padding: 0 20px; font-size: 13px; }
+  .products-cta .seed-link-button span { border-bottom: 0; padding-bottom: 0; }
+}
