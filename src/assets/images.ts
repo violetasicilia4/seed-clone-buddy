@@ -4,14 +4,9 @@ const base = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width
 const placeholder = (name: string) => ({ url: `${base}#${name}` });
 
 export const hero = placeholder("hero");
-export const ds = placeholder("ds");
-export const dm = placeholder("dm");
-export const am = placeholder("am");
-export const pm = placeholder("pm");
-export const duo = placeholder("duo");
-export const routine = placeholder("routine");
-export const unboxing = placeholder("unboxing");
-export const duoPlant = placeholder("duoPlant");
+export const duo = { url: "/lista-de-regalos-olla.jpg" };
+export const routine = { url: "/lista-de-regalos-mesa.jpg" };
+export const unboxing = { url: "/lista-de-regalos-lampara.jpg" };
 export const capsule = placeholder("capsule");
 export const microbiome = placeholder("microbiome");
 export const story1 = placeholder("story1");
