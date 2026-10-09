@@ -327,3 +327,16 @@ h2 { font-weight: 400; font-size: 40px; line-height: 1.08; margin: 0; }
 @media(max-width:640px) {
   .seed-hero .hero-copy h1 { font-size: min(8.2vw, 34px); text-wrap: balance; }
 }
+
+/* Celular: bloque de regalos más grande, ocupa casi toda la pantalla como el de Seed */
+@media(max-width:640px) and (min-height:761px) {
+  .duo-section { padding: 38px 0 40px; }
+  .duo-layout { gap: 22px; }
+  .duo-copy .eyebrow { font-size: 12px; margin-bottom: 12px; }
+  .duo-copy h2 { font-size: 30px; line-height: 1.1; }
+  .duo-copy > p:not(.eyebrow) { font-size: 15px; line-height: 1.4; margin: 16px 0 22px; }
+  .duo-section .seed-button { height: 50px; padding: 0 26px; font-size: 15px; }
+  .duo-main { aspect-ratio: 16 / 9.4; border-radius: 12px; }
+  .duo-thumbnails { gap: 10px; margin-top: 10px; }
+  .duo-thumbnails img { aspect-ratio: 1; border-radius: 12px; }
+}
