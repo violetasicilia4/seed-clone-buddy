@@ -490,3 +490,35 @@ html { scroll-padding-top: 80px; }
 @supports (height: 100lvh) {
   @media(max-width:640px) { .seed-hero { height: calc(100lvh - 38px - 24px); } }
 }
+
+/* Web: bloque de regalos más compacto (menos aire arriba y abajo y foto grande más baja); las fotos de abajo no cambian de tamaño */
+@media(min-width:641px) {
+  :root { --duo-pad: clamp(24px, 3.4svh, 40px); }
+  .duo-media { height: clamp(380px, calc(100svh - var(--duo-pad) * 2 - var(--curve) - 110px), 580px); }
+}
+
+/* Web: proporciones del bloque de regalos como la sección de Seed (texto a la izquierda, foto a la derecha):
+   la foto arranca cerca del borde celeste y el texto empieza un poco más abajo que la foto, no centrado. */
+@media(min-width:1001px) {
+  :root { --duo-pad: clamp(20px, 2.6svh, 32px); }
+  .duo-layout { align-items: start; }
+  .duo-copy { padding-top: clamp(56px, 8svh, 80px); }
+}
+
+/* Web: "Regalos" arranca apenas por debajo del borde superior de la foto */
+@media(min-width:1001px) { .duo-copy { padding-top: clamp(30px, 4.8svh, 48px); } }
+
+/* Web: el texto vuelve a su lugar de antes (centrado respecto de la foto) y la foto grande baja, sin recortarse,
+   para que arranque apenas por encima de "REGALOS". */
+@media(min-width:1001px) {
+  :root { --duo-pad: clamp(24px, 3.4svh, 40px); --duo-drop: clamp(48px, 9svh, 90px); }
+  .duo-layout { align-items: center; }
+  .duo-copy { padding-top: 0; margin-bottom: var(--duo-drop); }
+  .duo-media { margin-top: var(--duo-drop); }
+}
+
+/* Web: la foto grande sube un poco (24px) y el texto se queda donde estaba */
+@media(min-width:1001px) {
+  .duo-media { margin-top: calc(var(--duo-drop) - 24px); }
+  .duo-copy { position: relative; top: 12px; }
+}
