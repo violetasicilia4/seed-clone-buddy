@@ -1,5 +1,5 @@
 // Iconos lineales de las tres funcionalidades: misma grilla (48x48), mismo trazo y mismo color (currentColor).
-const base = { viewBox: "0 0 48 48", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true } as const;
+const base = { viewBox: "0 0 48 48", fill: "none", stroke: "currentColor", strokeWidth: 1.2, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true } as const;
 
 export function GiftIcon() {
   return (

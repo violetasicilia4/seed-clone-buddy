@@ -473,36 +473,252 @@ html { scroll-padding-top: 80px; }
 /* Celular: botón "Crear mi evento" de la sección de herramientas en el celeste (en web queda como está) */
 @media(max-width:640px) { .products-cta .seed-link-button { background: var(--slate); color: #fff; } }
 
-
-/* Funcionalidades: tres tarjetas editoriales (lista de regalos, micrositio, confirmación) */
-.feat-head { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 44px; }
+/* ───────── Funcionalidades ─────────
+   Principios tomados de la sección de productos de Seed (medidos en seed.com a 1440px):
+   cards de 24px de radio y 40px de padding, superficie tonal sin borde ni sombra, etiqueta en píldora con contorno,
+   nombre en peso liviano, visual centrado, CTA en píldora sólida y encabezado con texto + enlace a la derecha. */
+.products-section .feat-head { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 48px; }
 .feat-head h2 { max-width: 520px; font-size: 36px; line-height: 1.12; text-wrap: balance; }
-.feat-head p { max-width: 460px; justify-self: end; font-size: 15px; line-height: 1.55; color: var(--muted-foreground); margin: 0; }
+.feat-head-side { display: flex; flex-direction: column; align-items: flex-end; gap: 18px; }
+.feat-head-side p { max-width: 400px; font-size: 14px; line-height: 1.55; color: var(--muted-foreground); margin: 0; }
+.feat-head-side .seed-link-button { height: auto; }
+
 .feat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.feat-card { display: flex; flex-direction: column; align-items: flex-start; padding: 34px 30px 28px; border-radius: 14px; color: var(--foreground); background: rgb(255 255 255 / .5); border: 1px solid rgb(59 60 58 / .09); transition: transform .35s cubic-bezier(.2,.7,.2,1), background-color .35s, border-color .35s; }
-.feat-card:hover { transform: translateY(-3px); background: #fff; border-color: rgb(59 60 58 / .16); }
-.feat-primary { background: #fff; border-color: rgb(43 64 69 / .22); }
-.feat-icon { display: inline-flex; color: var(--forest); margin-bottom: 26px; }
-.feat-icon svg { width: 44px; height: 44px; }
-.feat-primary .feat-icon svg { width: 52px; height: 52px; }
-.feat-card h3 { font-size: clamp(19px, 1.6vw, 23px); line-height: 1.2; font-weight: 400; margin: 0 0 10px; }
-.feat-card p { font-size: 14px; line-height: 1.55; color: var(--muted-foreground); margin: 0 0 28px; max-width: 30ch; }
-.feat-link { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; font-size: 14px; color: var(--forest); padding-bottom: 3px; border-bottom: 1px solid currentColor; transition: gap .3s; }
-.feat-card:hover .feat-link { gap: 12px; }
-@media(max-width:1000px) { .feat-head { gap: 28px; } .feat-card { padding: 28px 22px 24px; } }
-@media(max-width:820px) { .feat-head { grid-template-columns: 1fr; gap: 14px; margin-bottom: 28px; } .feat-head p { justify-self: start; } .feat-grid { grid-template-columns: 1fr; gap: 12px; } }
-@media(max-width:640px) {
-  .feat-head h2 { font-size: clamp(26px, 7.4vw, 30px); }
-  .feat-head p { font-size: 15px; }
-  .feat-card { display: grid; grid-template-columns: 52px 1fr; column-gap: 18px; padding: 22px 20px 20px; align-items: start; }
-  .feat-icon { grid-row: 1 / span 3; margin: 2px 0 0; }
-  .feat-icon svg, .feat-primary .feat-icon svg { width: 44px; height: 44px; }
-  .feat-primary .feat-icon svg { width: 48px; height: 48px; }
-  .feat-card h3 { font-size: 19px; margin-bottom: 6px; }
-  .feat-card p { margin-bottom: 14px; max-width: none; }
-  .feat-link { justify-self: start; min-height: 24px; }
+.feat-card {
+  --ink: var(--foreground); --soft: var(--muted-foreground); --line: rgb(59 60 58 / .2); --accent: var(--foreground);
+  
+  position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: 40px 32px 34px; border-radius: 24px; color: var(--ink);
+  /* Superficie pastel: crema translúcido con un velo suave de oliva claro; igual en las tres cards */
+  background: linear-gradient(180deg, rgb(255 255 255 / .78), rgb(233 234 212 / .62));
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / .7);
+  transition: transform .35s cubic-bezier(.2,.7,.2,1);
 }
-@media(prefers-reduced-motion:reduce) { .feat-card, .feat-link { transition: none; } .feat-card:hover { transform: none; } }
-@media(max-width:640px) { .products-section { padding: 44px 0 calc(40px + var(--curve)); } .products-cta { margin-top: 22px; } }
-.feat-icon { height: 52px; align-items: flex-start; }
-@media(max-width:640px) { .feat-icon { height: auto; } }
+.feat-card:hover { transform: translateY(-3px); }
+.feat-tag { display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border: 1.5px solid var(--line); border-radius: 999px; font-size: 12px; letter-spacing: .06em; font-variant-numeric: tabular-nums; color: var(--ink); }
+.feat-card h3 { margin: 18px 0 0; font-size: clamp(21px, 1.75vw, 24px); line-height: 1.2; font-weight: 400; text-wrap: balance; }
+.feat-card p { margin: 10px 0 0; max-width: 27ch; font-size: 14px; line-height: 1.5; color: var(--soft); }
+
+/* Escenario del icono: dos círculos que se cruzan (el isotipo de Weda) como base del icono */
+.feat-stage { position: relative; display: grid; place-items: center; width: 100%; height: 176px; margin: 26px 0 0; color: var(--accent); }
+.feat-ring { position: absolute; top: 50%; width: 118px; height: 118px; margin-top: -59px; border: 1px solid var(--line); border-radius: 50%; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.feat-ring.a { left: calc(50% - 92px); }
+.feat-ring.b { left: calc(50% - 26px); }
+.feat-stage svg { position: relative; width: 60px; height: 60px; }
+.feat-card:hover .feat-ring.a { transform: translateX(14px); }
+.feat-card:hover .feat-ring.b { transform: translateX(-14px); }
+
+.feat-card:hover .products-cta { display: none; }
+
+@media(max-width: 1100px) { .feat-card { padding: 34px 24px 30px; } .feat-stage { transform: scale(.9); } }
+@media(max-width: 900px) {
+  .products-section .feat-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 30px; }
+  .feat-head-side { align-items: flex-start; }
+  .feat-grid { grid-template-columns: 1fr; gap: 12px; }
+  /* Tablet / celular: fila compacta (texto a la izquierda, escenario del icono a la derecha) */
+  .feat-card { display: grid; grid-template-columns: 1fr 132px; grid-template-areas: "tag stage" "title stage" "text stage"; align-items: start; justify-items: start; text-align: left; column-gap: 20px; padding: 26px 24px 24px; }
+  .feat-tag { grid-area: tag; }
+  .feat-card h3 { grid-area: title; margin-top: 14px; font-size: 21px; }
+  .feat-card p { grid-area: text; max-width: none; }
+  .feat-stage { grid-area: stage; align-self: center; justify-self: center; width: 132px; height: 132px; margin: 0; transform: none; }
+  .feat-ring { width: 84px; height: 84px; margin-top: -42px; }
+  .feat-ring.a { left: calc(50% - 64px); }
+  .feat-ring.b { left: calc(50% - 20px); }
+  .feat-stage svg { width: 44px; height: 44px; }
+  .feat-card:hover .feat-ring.a { transform: translateX(8px); }
+  .feat-card:hover .feat-ring.b { transform: translateX(-8px); }
+  }
+@media(max-width: 640px) {
+  .products-section { padding: 44px 0 calc(40px + var(--curve)); }
+  .feat-head h2 { font-size: clamp(26px, 7.4vw, 30px); }
+  .feat-head-side p { font-size: 15px; }
+  .feat-head-side .seed-link-button { background: var(--slate); color: #fff; border-radius: 999px; height: 44px; padding: 0 20px; font-size: 14px; }
+  .feat-head-side .seed-link-button span { border-bottom: 0; padding-bottom: 0; }
+}
+@media(max-width: 400px) { .feat-card { grid-template-columns: 1fr 104px; column-gap: 12px; padding: 22px 18px 20px; } .feat-stage { width: 104px; height: 104px; } .feat-ring { width: 66px; height: 66px; margin-top: -33px; } .feat-ring.a { left: calc(50% - 50px); } .feat-ring.b { left: calc(50% - 16px); } .feat-stage svg { width: 36px; height: 36px; } }
+@media(prefers-reduced-motion: reduce) { .feat-card, .feat-ring { transition: none; } .feat-card:hover .feat-ring { transform: none; } }
+
+/* "Most probiotics…": foto en blanco y negro a sangre y todo el contenido dentro de un panel de vidrio translúcido (como Seed) */
+.viacap-section { padding: clamp(40px, 7vw, 96px) 0; }
+.viacap-section::after { content: none; }
+.viacap-section::before { filter: grayscale(1) contrast(1.05); }
+.viacap-section .section-inner { padding: clamp(28px, 4.2vw, 64px); border-radius: clamp(20px, 2.4vw, 32px); background: rgb(246 244 238 / .42); -webkit-backdrop-filter: blur(26px) saturate(1.1); backdrop-filter: blur(26px) saturate(1.1); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .35); }
+@media(max-width:640px) { .viacap-section .section-inner { width: calc(100% - 24px); padding: 26px 20px; } }
+
+/* Sin imagen central: las dos descripciones de cápsula en dos columnas */
+.capsule-layout { grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+@media(max-width:640px) { .capsule-layout { gap: 20px; } }
+
+/* "Todo lo que hace especial": fondo blanco (el borde redondeado del hero se rellena igual) */
+.products-section { background: #fff; }
+.seed-hero { box-shadow: 0 25px 0 0 #fff; }
+.feat-card { background: linear-gradient(180deg, #f8f7f2, rgb(236 237 218)); box-shadow: inset 0 0 0 1px rgb(59 60 58 / .05); }
+
+/* Sin círculos detrás de los iconos: el icono solo, un poco más grande */
+.feat-ring { display: none; }
+.feat-stage { height: 112px; margin-top: 28px; }
+.feat-stage svg { width: 76px; height: 76px; }
+@media(max-width:1100px) { .feat-stage { transform: none; } }
+@media(max-width:900px) { .feat-stage { width: 96px; height: 96px; margin-top: 0; } .feat-stage svg { width: 56px; height: 56px; } }
+@media(max-width:400px) { .feat-stage { width: 80px; height: 80px; } .feat-stage svg { width: 46px; height: 46px; } .feat-card { grid-template-columns: 1fr 80px; } }
+
+/* Cards de vidrio: sobre el fondo blanco hay manchas pastel muy suaves (oliva, arena, rosado) que el vidrio desenfoca */
+.products-section { position: relative; overflow: hidden; isolation: isolate; }
+.products-section::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(34vw 34vw at 14% 72%, rgb(196 203 150 / .55), transparent 70%),
+    radial-gradient(30vw 30vw at 52% 92%, rgb(238 214 186 / .6), transparent 70%),
+    radial-gradient(34vw 34vw at 88% 62%, rgb(225 200 205 / .45), transparent 70%),
+    radial-gradient(26vw 26vw at 64% 38%, rgb(214 222 190 / .4), transparent 70%); }
+.feat-card { background: rgb(255 255 255 / .42); -webkit-backdrop-filter: blur(22px) saturate(1.35); backdrop-filter: blur(22px) saturate(1.35);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / .75), 0 14px 40px -18px rgb(59 60 58 / .14); }
+@media(max-width:900px) { .products-section::before { background:
+    radial-gradient(70vw 70vw at 10% 55%, rgb(196 203 150 / .5), transparent 70%),
+    radial-gradient(70vw 70vw at 95% 82%, rgb(238 214 186 / .55), transparent 70%),
+    radial-gradient(60vw 60vw at 80% 30%, rgb(225 200 205 / .4), transparent 70%); } }
+
+/* Cards tono sobre tono, como las de Seed: una capa translúcida lisa del color de la paleta sobre el fondo blanco (sin manchas, sin borde, sin sombra) */
+.products-section::before { content: none; }
+.feat-card { background: rgb(182 180 110 / .16); box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+
+/* Cards con el mismo cristal que la barra flotante (gris translúcido + desenfoque) y tipografía blanca */
+.feat-card {
+  --ink: #fff; --soft: rgb(255 255 255 / .86); --line: rgb(255 255 255 / .55); --accent: #fff;
+  background: linear-gradient(rgb(255 255 255 / .10), rgb(255 255 255 / .10)), rgb(70 82 80 / .6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5); backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: 0 6px 24px rgb(0 0 0 / .10); text-shadow: 0 1px 10px rgb(0 0 0 / .22);
+}
+.feat-card:hover { transform: translateY(-3px); }
+
+/* Cristal más claro (igual que las píldoras de la barra) */
+.feat-card { background: linear-gradient(rgb(255 255 255 / .12), rgb(255 255 255 / .12)), rgb(70 82 80 / .3); text-shadow: 0 1px 12px rgb(0 0 0 / .3); }
+
+/* Cards: casi blancas, apenas más grises que el fondo, con tipografía oscura */
+.feat-card {
+  --ink: var(--foreground); --soft: var(--muted-foreground); --line: rgb(59 60 58 / .22); --accent: var(--foreground);
+  background: #f4f4f2; box-shadow: none; text-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+
+/* Web: el texto de la derecha arranca alineado con la primera línea del título */
+@media(min-width:901px) { .products-section .feat-head { align-items: first baseline; } }
+
+/* Las cards ya no son enlaces; el único CTA de la sección va centrado debajo (mismo botón "Crear mi evento" del header) */
+.feat-card:hover { transform: none; }
+.feat-cta { display: flex; justify-content: center; margin-top: 40px; }
+@media(max-width:640px) { .feat-cta { margin-top: 24px; } .feat-cta .seed-button { height: 48px; } }
+
+/* CTA de la sección como estaba antes: enlace subrayado con flecha (web) y píldora celeste (celular), alineado a la derecha */
+.feat-cta { justify-content: flex-end; }
+@media(max-width:640px) {
+  .feat-cta .seed-link-button { background: var(--slate); color: #fff; border-radius: 999px; height: 44px; padding: 0 20px; font-size: 14px; }
+  .feat-cta .seed-link-button span { border-bottom: 0; padding-bottom: 0; }
+}
+
+/* Web: el CTA va arriba, debajo del subtítulo, a la derecha. En celular vuelve debajo de las cards. */
+.feat-head-side .feat-cta { margin-top: 18px; }
+@media(max-width:900px) {
+  .products-section .section-inner { display: flex; flex-direction: column; }
+  .products-section .feat-head, .products-section .feat-head-side { display: contents; }
+  .feat-head h2 { order: 1; margin-bottom: 16px; }
+  .feat-head-side p { order: 2; margin-bottom: 30px; }
+  .feat-grid { order: 3; }
+  .feat-head-side .feat-cta { order: 4; margin-top: 24px; }
+}
+
+/* Web: título y bloque de la derecha (subtítulo + CTA) a la par, centrados entre sí */
+@media(min-width:901px) { .products-section .feat-head { align-items: center; } }
+
+/* Video del hero: se recorta el borde derecho (~12 %) donde estaban los íconos de Instagram (corazón 294 y comentarios 14) */
+.hero-image { right: auto; width: 114%; max-width: none; }
+
+/* Pie: sin la línea del disclaimer ni la imagen; solo el copyright */
+.footer-bottom { justify-content: flex-end; }
+
+/* Web: encabezado apilado y alineado a la izquierda: título, debajo el subtítulo y debajo el CTA */
+@media(min-width:901px) {
+  .products-section .feat-head { grid-template-columns: 1fr; gap: 18px; align-items: start; margin-bottom: 48px; }
+  .feat-head h2 { max-width: none; }
+  .feat-head-side { align-items: flex-start; gap: 0; }
+  .feat-head-side p { max-width: 560px; }
+  .feat-head-side .feat-cta { justify-content: flex-start; margin-top: 22px; }
+}
+
+/* Web: el CTA va a la derecha, en la misma fila que el subtítulo */
+@media(min-width:901px) {
+  .feat-head-side { flex-direction: row; justify-content: space-between; align-items: flex-end; width: 100%; gap: 32px; }
+  .feat-head-side .feat-cta { margin-top: 0; justify-content: flex-end; }
+}
+
+/* Cards sin etiqueta numerada: el título pasa a ser el primer elemento */
+.feat-card h3 { margin-top: 0; }
+.feat-card { padding-top: 44px; }
+@media(max-width:900px) { .feat-card { grid-template-areas: "title stage" "text stage"; padding-top: 26px; } }
+
+/* Web: la sección ocupa casi toda la pantalla, como la primera sección de productos de Seed (título ~56px, cards altas con padding amplio).
+   Las cards usan subgrid: títulos, textos e iconos quedan alineados en filas aunque los textos tengan distinta longitud. */
+@media(min-width:901px) {
+  .products-section { min-height: clamp(720px, 94svh, 980px); padding-top: clamp(64px, 8svh, 96px); display: flex; }
+  .products-section .section-inner { display: flex; flex-direction: column; flex: 1; }
+  .products-section .feat-head { margin-bottom: clamp(40px, 6svh, 72px); }
+  .feat-head h2 { font-size: clamp(40px, 3.9vw, 58px); line-height: 1.08; letter-spacing: -.01em; }
+  .feat-head-side p { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.5; max-width: 600px; }
+  .feat-head-side .seed-link-button { font-size: 15px; }
+  .feat-grid { flex: 1; grid-template-rows: auto auto 1fr; gap: 16px; }
+  .feat-card { display: grid; grid-template-rows: subgrid; grid-row: span 3; row-gap: 0; padding: clamp(40px, 5.5svh, 56px) clamp(28px, 2.8vw, 44px) clamp(32px, 4.5svh, 48px); }
+  .feat-card h3 { font-size: clamp(22px, 1.9vw, 28px); margin: 0; }
+  .feat-card p { margin: 14px 0 0; max-width: 30ch; justify-self: center; font-size: clamp(14px, 1.1vw, 16px); }
+  .feat-stage { align-self: center; height: auto; margin: 28px 0 0; }
+  .feat-stage svg { width: clamp(72px, 7vw, 104px); height: clamp(72px, 7vw, 104px); }
+}
+@media(min-width:901px) {
+  .products-section .section-inner { flex: 0 1 auto; }
+  .feat-card p { align-self: start; }
+}
+@media(min-width:901px) { .feat-card h3 { align-self: start; } }
+
+/* Carrusel de testimonios dentro del panel de vidrio */
+.tm { display: flex; flex-direction: column; gap: clamp(28px, 4vw, 52px); }
+.tm .eyebrow { margin: 0; }
+.tm-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; outline-offset: 6px; }
+.tm-track::-webkit-scrollbar { display: none; }
+.tm-slide { flex: 0 0 100%; scroll-snap-align: start; margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: clamp(24px, 3.4vw, 44px); min-height: clamp(220px, 24vw, 300px); }
+.tm-slide blockquote { margin: 0; max-width: 26ch; font-size: clamp(26px, 3.6vw, 52px); line-height: 1.14; letter-spacing: -.01em; font-weight: 400; text-wrap: balance; }
+.tm-slide figcaption { font-size: 15px; letter-spacing: .02em; color: var(--muted-foreground); }
+.tm-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.tm-dots { display: flex; gap: 10px; }
+.tm-dots button { position: relative; width: 28px; height: 28px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.tm-dots button::after { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: rgb(59 60 58 / .35); transition: width .3s, margin .3s, background-color .3s, border-radius .3s; }
+.tm-dots button.on::after { width: 24px; margin-left: -12px; border-radius: 99px; background: var(--foreground); }
+.tm-arrows { display: flex; gap: 10px; }
+.tm-arrows button { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgb(59 60 58 / .35); background: rgb(255 255 255 / .28); color: var(--foreground); cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: background-color .3s; touch-action: manipulation; }
+.tm-arrows button:hover { background: rgb(255 255 255 / .6); }
+@media(max-width: 640px) { .tm-slide { min-height: 260px; } .tm-slide blockquote { font-size: 25px; } }
+@media(prefers-reduced-motion: reduce) { .tm-dots button::after, .tm-arrows button { transition: none; } }
+
+/* Planes: tres tarjetas con el mismo sistema que las funcionalidades (superficie tonal, radio 24, sin sombras) */
+.plans-section { background: #fff; padding: clamp(64px, 9vw, 120px) 0; }
+.plans-head { max-width: 640px; margin-bottom: clamp(32px, 5vw, 60px); }
+.plans-head h2 { font-size: clamp(30px, 3.9vw, 56px); line-height: 1.08; letter-spacing: -.01em; text-wrap: balance; margin: 0 0 16px; }
+.plans-head p { margin: 0; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.5; color: var(--muted-foreground); max-width: 52ch; }
+.plans-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.plan-card { display: flex; flex-direction: column; padding: clamp(28px, 3vw, 44px); border-radius: 24px; background: #f4f4f2; color: var(--foreground); }
+.plan-card h3 { margin: 0; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.1; font-weight: 400; }
+.plan-sub { margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: var(--muted-foreground); min-height: 2.9em; }
+.plan-card ul { list-style: none; margin: clamp(24px, 3vw, 36px) 0 clamp(28px, 3.4vw, 44px); padding: 24px 0 0; border-top: 1px solid rgb(59 60 58 / .14); display: grid; gap: 14px; }
+.plan-card li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; line-height: 1.35; }
+.plan-card li svg { flex: none; margin-top: 2px; color: var(--foreground); }
+.plan-card .seed-button { margin-top: auto; align-self: flex-start; height: 48px; }
+@media(max-width: 900px) { .plans-grid { grid-template-columns: 1fr; gap: 12px; } .plan-sub { min-height: 0; } .plan-card ul { margin: 22px 0 26px; padding-top: 20px; } }
+
+/* Testimonios: foto de fondo nueva, a color */
+.viacap-section::before { background: url("/fondo-testimonios.jpg") center 42% / cover no-repeat; filter: none; }
+
+/* Planes: botón en el azul Weda (celeste de la paleta) */
+.plan-card .seed-button { background: var(--slate); color: #fff; }
+.plan-card .seed-button:hover { background: color-mix(in srgb, var(--slate) 85%, #000); }
+/* Testimonios: el vidrio un poco más opaco para que el texto se lea sobre la foto a color */
+.viacap-section .section-inner { background: rgb(246 244 238 / .56); }
+.viacap-section::before { background-position: center 72%; }
+
+/* Botones sin destino (pendientes): no muestran cursor de enlace */
+a:not([href]) { cursor: default; }
